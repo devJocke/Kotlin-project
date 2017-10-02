@@ -8,8 +8,7 @@
     android:orientation="vertical"
     tools:openDrawer="start">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/coordinator_main_layout"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -19,7 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAccent"/>
-    </android.support.design.widget.CoordinatorLayout>
+
+        <fragment
+            android:id="@+id/fragment_one"
+            android:name="com.example.jocke.kotlin.FirstPageFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
 
     <!-- GRAVITY LEFT STATES THE DRAWER CONTENT -->
 

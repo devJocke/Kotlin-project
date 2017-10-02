@@ -1,5 +1,6 @@
 package com.example.jocke.kotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.first_page_drawer.*
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val TAG: String = this::class.java.simpleName
-    lateinit var drawerToggle: ActionBarDrawerToggle
+    private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 main_drawer_container.closeDrawer(GravityCompat.START)
             }
         }
+        //TODO REMOVE
+        startActivity(Intent(this, SplashActivity::class.java))
+        finish()
         return true
     }
 }
