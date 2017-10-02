@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kotlin</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title">Title</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="opem">Open</string>
+    <string name="email">Email</string>
+    <string name="lastname">Lastname</string>
+    <string name="firstname">Firstname</string>
+</resources>
