@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#FF1063D0</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
-    <color name="lime">#C3D010</color>
 
-    <color name="alpha_lime_50">#80C3D010</color>
+    <color name="teal">#3487cf</color>
+    <color name="dark_teal">#1076d0</color>
+    <color name="darker_teal_80">#801063d0</color>
+    <color name="darker_teal">#1063d0</color>
+
     <color name="alpha_white_lime">#f2f2f2</color>
     <color name="black_overlay">#66000000</color>
 </resources>

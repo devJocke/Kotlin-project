@@ -17,7 +17,7 @@
             android:id="@+id/customToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"/>
+            android:background="@color/teal"/>
 
         <fragment
             android:id="@+id/fragment_one"
@@ -25,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
-
 
     <!-- GRAVITY LEFT STATES THE DRAWER CONTENT -->
 

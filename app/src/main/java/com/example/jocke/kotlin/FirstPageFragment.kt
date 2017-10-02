@@ -48,10 +48,11 @@ class FirstPageFragment : Fragment() {
         val user1 = User("Hejsan", "asd", "wqe")
         val user2 = User("Joakim", "Nilsson", "Robin")
         val user3 = User("Hejsan", "asd", "Robin")
+        val user4 = User("Hejsan", "asd", "Robin")
         users.add(user1)
         users.add(user2)
         users.add(user3)
-
+        users.add(user4)
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = UserAdapter(users)
