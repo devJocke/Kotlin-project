@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.example.jocke.kotlin.adapters.UserAdapter
+import com.example.jocke.kotlin.data.dal.Person
 import com.example.jocke.kotlin.extensions.setUrl
 import com.example.jocke.kotlin.extensions.toast
 import com.example.jocke.kotlin.extensions.visible
@@ -44,18 +45,18 @@ class FirstPageFragment : Fragment() {
     private fun setTextViewText() {
         textView.text = "TextView"
 
-        val users: ArrayList<User> = ArrayList()
-        val user1 = User("Hejsan", "asd", "wqe")
-        val user2 = User("Joakim", "Nilsson", "Robin")
-        val user3 = User("Hejsan", "asd", "Robin")
-        val user4 = User("Hejsan", "asd", "Robin")
-        users.add(user1)
-        users.add(user2)
-        users.add(user3)
-        users.add(user4)
+        val persons: ArrayList<Person> = ArrayList()
+        val user1 = Person("Hejsan", "asd", "wqe")
+        val user2 = Person("Joakim", "Nilsson", "Robin")
+        val user3 = Person("Hejsan", "asd", "Robin")
+        val user4 = Person("Hejsan", "asd", "Robin")
+        persons.add(user1)
+        persons.add(user2)
+        persons.add(user3)
+        persons.add(user4)
 
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = UserAdapter(users)
+        recyclerView.adapter = UserAdapter(persons)
 
         display_stuff.setUrl(R.drawable.x)
 
