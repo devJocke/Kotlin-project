@@ -14,6 +14,8 @@ import com.example.jocke.kotlin.extensions.setUrl
 import com.example.jocke.kotlin.extensions.toast
 import com.example.jocke.kotlin.extensions.visible
 import kotlinx.android.synthetic.main.fragment_first_page.*
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 
 
 /**
@@ -38,6 +40,7 @@ class FirstPageFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setTextViewText()
+        xd()
     }
 
 
@@ -84,6 +87,17 @@ class FirstPageFragment : Fragment() {
             View.INVISIBLE -> toast(context, "Invisible")
             else -> toast(context, "Gone")
         }
+    }
+
+    private fun xd(){
+//        .networkModule(new NetworkModule "https://apirix-inspection-stage.azurewebsites.net")
+        Retrofit.Builder()
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build()
+
+
+//                .addConverterFactory(GsonConverterFactory.create(gson))
+//                .baseUrl("localhost")
     }
 }
 
