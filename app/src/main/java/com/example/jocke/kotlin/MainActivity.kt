@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
+import com.facebook.stetho.Stetho
 import kotlinx.android.synthetic.main.drawer_layout.*
 import kotlinx.android.synthetic.main.first_page_drawer.*
 
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Stetho.initializeWithDefaults(this)
 
         setSupportActionBar(customToolbar)
         setupDrawer()

@@ -15,6 +15,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -64,11 +65,8 @@ dependencies {
     compile "com.mobandme:android-transformer:$transformVersion"
     provided "com.mobandme:android-transformer-compiler:$transformVersion"
 
-    compile 'com.google.guava:guava:23.0-android'
-
     def daggerVersion = '2.11'
     // dagger
-    compile "com.google.dagger:dagger:$daggerVersion"
     compile "com.google.dagger:dagger-android-support:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
@@ -78,7 +76,10 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.10'
 
     // backport of java 8 lambda to java 7,6
-    compile 'net.orfjackal.retrolambda:retrolambda:2.5.1'
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.5.1'
+
+    // stetho debugging
+    compile 'com.facebook.stetho:stetho:1.5.0'
 }
 repositories {
     mavenCentral()

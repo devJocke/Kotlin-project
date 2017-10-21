@@ -7,15 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
-import com.example.jocke.kotlin.adapters.UserAdapter
-import com.example.jocke.kotlin.data.dal.Person
-import com.example.jocke.kotlin.extensions.setUrl
-import com.example.jocke.kotlin.extensions.toast
+import android.widget.Toast
+import com.example.jocke.kotlin.adapters.TeamAdapter
+import com.example.jocke.kotlin.data.person.TeamDTO
+import com.example.jocke.kotlin.data.person.TeamService
 import com.example.jocke.kotlin.extensions.visible
 import kotlinx.android.synthetic.main.fragment_first_page.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 /**
@@ -23,6 +25,8 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
  */
 
 class FirstPageFragment : Fragment() {
+
+    public val TAG : String = javaClass.simpleName
 
     companion object {
         @JvmStatic
@@ -39,35 +43,9 @@ class FirstPageFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTextViewText()
-        xd()
-    }
-
-
-
-    private fun setTextViewText() {
-        textView.text = "TextView"
-
-        val persons: ArrayList<Person> = ArrayList()
-        val user1 = Person("Hejsan", "asd", "wqe")
-        val user2 = Person("Joakim", "Nilsson", "Robin")
-        val user3 = Person("Hejsan", "asd", "Robin")
-        val user4 = Person("Hejsan", "asd", "Robin")
-        persons.add(user1)
-        persons.add(user2)
-        persons.add(user3)
-        persons.add(user4)
-
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = UserAdapter(persons)
-
-        display_stuff.setUrl(R.drawable.x)
-
         sortButton.click(textView, display_stuff)
-        checkVisibility(textView)
-
+        getAllPersons()
     }
-
 
     private fun Button.click(textView: View, imageView: View) {
         val list: ArrayList<View> = ArrayList()
@@ -80,24 +58,33 @@ class FirstPageFragment : Fragment() {
         }
     }
 
+    private fun getAllPersons() {
 
-    private fun checkVisibility(textView: TextView) {
-        when (textView.visibility) {
-            View.VISIBLE -> toast(context, "Visible")
-            View.INVISIBLE -> toast(context, "Invisible")
-            else -> toast(context, "Gone")
-        }
-    }
+        val builder = Retrofit.Builder()
+                //Get from localhost on emulator
+                .baseUrl("http://10.0.2.2:53836")
+                .addConverterFactory(GsonConverterFactory.create())
 
-    private fun xd(){
-//        .networkModule(new NetworkModule "https://apirix-inspection-stage.azurewebsites.net")
-        Retrofit.Builder()
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build()
+        val retrofit = builder.build()
 
+        val client = retrofit.create(TeamService::class.java)
+        val call= client.allPersons
 
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .baseUrl("localhost")
+        call.enqueue(object : Callback<List<TeamDTO>> {
+            override fun onResponse(call : Call<List<TeamDTO>>, response: Response<List<TeamDTO>>) {
+                val allPersons = response.body()!!
+
+                if(allPersons.isEmpty()){
+                    Toast.makeText(context, "No Persons available", Toast.LENGTH_SHORT).show()
+                }
+                recyclerView.layoutManager = LinearLayoutManager(context)
+                recyclerView.adapter = TeamAdapter(allPersons)
+            }
+
+            override fun onFailure(call: Call<List<TeamDTO>>, t: Throwable) {
+                Toast.makeText(context, "Server error", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
 
