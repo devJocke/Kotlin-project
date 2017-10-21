@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#ffeb3b</color>
     <color name="colorPrimaryDark">#FF1063D0</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
 
+    <color name="solid_green_light">#3eff3b</color>
     <color name="teal">#3487cf</color>
     <color name="dark_teal">#1076d0</color>
     <color name="darker_teal_80">#801063d0</color>
-    <color name="darker_teal">#1063d0</color>
+    <color name="darker_teal">#000000</color>
 
     <color name="alpha_white_lime">#f2f2f2</color>
     <color name="black_overlay">#66000000</color>
+    <color name="toolbar_shadow_yellow">#884d4c31</color>
 </resources>

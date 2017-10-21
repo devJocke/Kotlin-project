@@ -18,7 +18,7 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DataSpec
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.RawResourceDataSource
-import kotlinx.android.synthetic.main.splash_screen_activity.*
+import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashActivity : AppCompatActivity(), Player.EventListener {
 
@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity(), Player.EventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_screen_activity)
+        setContentView(R.layout.activity_splash_screen)
         val playerView: SimpleExoPlayerView = findViewById(R.id.player_view)
 
         hideSystemUI()

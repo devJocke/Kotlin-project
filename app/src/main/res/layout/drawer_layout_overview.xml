@@ -7,4 +7,4 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     app:headerLayout="@layout/navigation_view_header_layout"
-    app:menu="@menu/main_navigation_drawer_items"/>
+    app:menu="@menu/menu_navigation_drawer_overview"/>

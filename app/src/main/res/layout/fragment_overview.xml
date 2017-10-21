@@ -20,52 +20,104 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Manually control the inset of the hamburger icon -->
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 style="@style/Toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:contentInsetStart="0dp"
-                app:contentInsetStartWithNavigation="0dp">
+                app:contentInsetStartWithNavigation="0dp"
+                tools:showIn="@layout/fragment_overview">
+
+                <include layout="@layout/toolbar_overview"/>
+            </android.support.v7.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/toolbar_dropshadow"/>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1.8"
+                app:cardElevation="5dp"
+                tools:showIn="@layout/fragment_overview">
+
+                <include layout="@layout/next_game_overview"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_weight="1.4"
+                app:cardElevation="5dp"
+                tools:showIn="@layout/fragment_overview">
+
+                <include layout="@layout/upcoming_game_overview"/>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_weight="1"
+                app:cardElevation="5dp"
+                tools:showIn="@layout/fragment_overview">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="24dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/hej"
-                        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="start|center_vertical"
-                        android:text="@string/title_over_view"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_scoreboard"
+                        android:textAlignment="center"
+                        android:textSize="16sp"/>
 
 
-                    <ImageView
-                        android:id="@+id/club_crest_image_view"
-                        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="60dp"
-                        android:layout_gravity="center"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/title_location"
+                            android:textSize="16sp"/>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="1"
+                            android:textSize="16sp"/>
+                    </LinearLayout>
                 </LinearLayout>
-            </android.support.v7.widget.Toolbar>
-
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
         <!-- GRAVITY LEFT STATES THE DRAWER CONTENT -->
 
         <include
-            layout="@layout/overview_drawer_layout"
+            layout="@layout/drawer_layout_overview"
             tools:visibility="gone"/>
 
     </android.support.v4.widget.DrawerLayout>

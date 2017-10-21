@@ -2,13 +2,14 @@ package com.example.jocke.kotlin
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.jocke.kotlin.R.drawable.lif
+import android.util.Log
+import android.view.*
+import com.example.jocke.kotlin.R.drawable.crest_lindsdal
+import com.example.jocke.kotlin.R.menu.menu_overview
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.drawer_layout_overview.*
 import kotlinx.android.synthetic.main.fragment_overview.*
-import kotlinx.android.synthetic.main.overview_drawer_layout.*
+import kotlinx.android.synthetic.main.toolbar_overview.*
 
 
 /**
@@ -17,8 +18,13 @@ import kotlinx.android.synthetic.main.overview_drawer_layout.*
 
 class OverViewFragment : Fragment() {
 
-    public val TAG: String = javaClass.simpleName
+    private val TAG: String = javaClass.simpleName
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
+    }
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater?.inflate(R.layout.fragment_overview, container, false)
         return rootView
@@ -27,10 +33,19 @@ class OverViewFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Picasso.with(context).load(lif).fit().into(club_crest_image_view)
+        Picasso.with(context).load(crest_lindsdal).fit().into(club_crest_image_view)
         (activity as MainActivity).setupDrawer(toolbar, drawer_layout, main_navigation_container)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(menu_overview, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        Log.d(TAG, item?.itemId.toString())
+        return super.onOptionsItemSelected(item)
+    }
 
 //    private fun getAllPersons() {
 //

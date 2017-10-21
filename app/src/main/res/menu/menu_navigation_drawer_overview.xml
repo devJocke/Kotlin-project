@@ -21,10 +21,10 @@
         android:id="@+id/personal_group">
         <item
             android:id="@+id/firstname"
-            android:title="@string/placeholder_firstname"/>
+            android:title="@string/placeholder_home_location"/>
         <item
             android:id="@+id/lastname"
-            android:title="@string/placeholder_lastname"/>
+            android:title="@string/placeholder_home_arena"/>
         <item
             android:id="@+id/email"
             android:title="@string/title_email"/>
