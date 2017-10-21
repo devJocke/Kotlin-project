@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.example.jocke.kotlin.R
 import com.example.jocke.kotlin.data.person.TeamDTO
 import com.example.jocke.kotlin.extensions.inflate
-import kotlinx.android.synthetic.main.row_string_data.view.*
+import kotlinx.android.synthetic.main.row_team_data.view.*
 
 /**
  * Created by Jocke on 2017-07-09.
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.row_string_data.view.*
 open class TeamAdapter(private val teams: List<TeamDTO>) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamAdapter.ViewHolder {
-        return ViewHolder(parent.inflate(R.layout.row_string_data))
+        return ViewHolder(parent.inflate(R.layout.row_team_data))
     }
 
 

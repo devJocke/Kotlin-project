@@ -36,4 +36,8 @@
         <item name="spinBars">false</item>
         <item name="color">@android:color/black</item>
     </style>
+
+    <style name="Toolbar">
+        <item name="android:background">?colorPrimary</item>
+    </style>
 </resources>

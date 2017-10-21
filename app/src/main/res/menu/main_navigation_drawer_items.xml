@@ -5,28 +5,28 @@
         android:id="@+id/group">
         <item
             android:id="@+id/close_drawer"
-            android:title="@string/close"/>
+            android:title="@string/title_close"/>
         <item
             android:id="@+id/open_drawer"
-            android:title="@string/opem"/>
+            android:title="@string/title_open"/>
         <item
             android:id="@+id/login"
-            android:title="@string/login"/>
+            android:title="@string/title_login"/>
         <item
             android:id="@+id/logout"
-            android:title="@string/logout"/>
+            android:title="@string/title_logout"/>
     </group>
 
     <group
         android:id="@+id/personal_group">
         <item
             android:id="@+id/firstname"
-            android:title="@string/firstname"/>
+            android:title="@string/placeholder_firstname"/>
         <item
             android:id="@+id/lastname"
-            android:title="@string/lastname"/>
+            android:title="@string/placeholder_lastname"/>
         <item
             android:id="@+id/email"
-            android:title="@string/email"/>
+            android:title="@string/title_email"/>
     </group>
 </menu>

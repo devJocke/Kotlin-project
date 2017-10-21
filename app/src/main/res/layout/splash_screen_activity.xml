@@ -44,7 +44,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"/>
+            android:hint="@string/title_email"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="@string/login"
+                android:text="@string/title_login"
                 android:theme="@style/AppTheme.PositiveButton"/>
         </LinearLayout>
     </LinearLayout>

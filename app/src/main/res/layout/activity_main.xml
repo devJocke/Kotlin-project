@@ -7,7 +7,9 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/first_page_drawer"/>
-    
+    <fragment
+        android:id="@+id/fragment_one"
+        android:name="com.example.jocke.kotlin.OverViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

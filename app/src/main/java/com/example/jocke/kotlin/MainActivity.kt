@@ -3,22 +3,18 @@ package com.example.jocke.kotlin
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
 import com.facebook.stetho.Stetho
-import kotlinx.android.synthetic.main.drawer_layout.*
-import kotlinx.android.synthetic.main.first_page_drawer.*
-
-
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val TAG: String = this::class.java.simpleName
-    private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +22,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         Stetho.initializeWithDefaults(this)
 
-        setSupportActionBar(customToolbar)
-        setupDrawer()
     }
 
-    private fun setupDrawer() {
-        drawerToggle = ActionBarDrawerToggle(this, main_drawer_container, customToolbar, R.string.open, R.string.close)
-        main_drawer_container.addDrawerListener(drawerToggle)
-        main_navigation_container.setNavigationItemSelectedListener(this)
+    fun setupDrawer(toolbar: Toolbar, drawerLayout: DrawerLayout, navView: NavigationView) {
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        val drawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.title_open, R.string.title_close)
+        drawerLayout.addDrawerListener(drawerToggle)
+        navView.setNavigationItemSelectedListener(this)
         drawerToggle.syncState()
     }
 
@@ -55,7 +52,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.open_drawer -> {
             }
             R.id.close_drawer -> {
-                main_drawer_container.closeDrawer(GravityCompat.START)
             }
         }
         //TODO REMOVE
