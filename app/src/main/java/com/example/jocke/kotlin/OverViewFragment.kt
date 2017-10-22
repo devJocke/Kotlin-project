@@ -9,6 +9,7 @@ import com.example.jocke.kotlin.R.menu.menu_overview
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.drawer_layout_overview.*
 import kotlinx.android.synthetic.main.fragment_overview.*
+import kotlinx.android.synthetic.main.next_game_overview.*
 import kotlinx.android.synthetic.main.toolbar_overview.*
 
 
@@ -16,22 +17,30 @@ import kotlinx.android.synthetic.main.toolbar_overview.*
  * Created by Jocke on 2017-07-02.
  */
 
-class OverViewFragment : Fragment() {
+class OverViewFragment : Fragment(), View.OnClickListener {
 
     private val TAG: String = javaClass.simpleName
 
+
+    companion object {
+        fun newInstance(bundle: Bundle?): OverViewFragment = OverViewFragment()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setHasOptionsMenu(true)
     }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater?.inflate(R.layout.fragment_overview, container, false)
+
         return rootView
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        line_up_image_button.setOnClickListener(this)
 
         Picasso.with(context).load(crest_lindsdal).fit().into(club_crest_image_view)
         (activity as MainActivity).setupDrawer(toolbar, drawer_layout, main_navigation_container)
@@ -45,6 +54,11 @@ class OverViewFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         Log.d(TAG, item?.itemId.toString())
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onClick(p0: View?) {
+
+        (activity as MainActivity).startTeamLineupFragment(null)
     }
 
 //    private fun getAllPersons() {

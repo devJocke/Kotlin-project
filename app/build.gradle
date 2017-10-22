@@ -50,19 +50,14 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$supportVersion"
     compile "com.android.support:design:$supportVersion"
 
-    compile 'org.greenrobot:greendao:3.2.2' // add library
-
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    testCompile 'junit:junit:4.12'
-    compile "com.google.android.exoplayer:exoplayer:r2.5.1"
+    // add library
 
     // retrofit
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     // rxjava
-    compile 'io.reactivex:rxandroid:1.2.1'
-   // transform
+    // transform
     compile "com.mobandme:android-transformer:$transformVersion"
     provided "com.mobandme:android-transformer-compiler:$transformVersion"
 
@@ -72,20 +67,27 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     // dagger.android
-    compile 'com.google.dagger:dagger-android:2.10'
-    compile 'com.google.dagger:dagger-android-support:2.10' // if you use the support libraries
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.10'
+    // if you use the support libraries
 
     // backport of java 8 lambda to java 7,6
-    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.5.1'
 
     // stetho debugging
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.android.exoplayer:exoplayer:r2.5.1'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.google.dagger:dagger-android:2.10'
+    compile 'com.google.dagger:dagger-android-support:2.10'
     compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.10'
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.5.1'
 }
 repositories {
     mavenCentral()
 }
-greendao{
+greendao {
     schemaVersion 1
     targetGenDir "src/main/java"
 }

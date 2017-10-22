@@ -22,16 +22,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         Stetho.initializeWithDefaults(this)
 
+
+        if (supportFragmentManager.findFragmentByTag("overViewFragment") == null) {
+            val overViewFragment = OverViewFragment.newInstance(null)
+            supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                    .replace(R.id.main_activity_framelayout, overViewFragment)
+                    .addToBackStack("overViewFragment")
+                    .commit()
+        }
     }
 
     fun setupDrawer(toolbar: Toolbar, drawerLayout: DrawerLayout, navView: NavigationView) {
         setSupportActionBar(toolbar)
 
-        supportActionBar?.setDisplayShowTitleEnabled(false)
         val drawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.title_open, R.string.title_close)
         drawerLayout.addDrawerListener(drawerToggle)
         navView.setNavigationItemSelectedListener(this)
         drawerToggle.syncState()
+    }
+
+    fun attachSupportBar(toolbar: Toolbar?, displayHomeAsUp: Boolean) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(displayHomeAsUp)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -59,4 +72,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         finish()
         return true
     }
+
+    fun startTeamLineupFragment(bundle: Bundle?) {
+
+
+        if (supportFragmentManager.findFragmentByTag("teamLineupFragment") == null) {
+            val teamLineupFragment = TeamLineupFragment.newInstance(bundle)
+            supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                    .replace(R.id.main_activity_framelayout, teamLineupFragment)
+                    .addToBackStack("teamLineupFragment")
+                    .commit()
+        }
+    }
+
 }
+
