@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0-rc2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
         classpath 'me.tatarka:gradle-retrolambda:3.4.0'
@@ -16,9 +16,8 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url "https://maven.google.com"
-        }
+        maven {   url "https://maven.google.com"    }
+        maven { url 'https://jitpack.io' }
         jcenter()
     }
 }

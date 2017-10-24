@@ -7,8 +7,8 @@
 
     <color name="solid_green_light">#3eff3b</color>
     <color name="teal">#3487cf</color>
-    <color name="dark_teal">#1076d0</color>
-    <color name="darker_teal_80">#801063d0</color>
+    <color name="darker_yellow">#f1c40f</color>
+    <color name="darker_teal_80">#80f1c40f</color>
     <color name="darker_teal">#000000</color>
 
     <color name="alpha_white_lime">#f2f2f2</color>

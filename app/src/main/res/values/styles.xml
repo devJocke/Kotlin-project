@@ -15,6 +15,8 @@
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowBackground">@null</item>
         <item name="editTextStyle">@style/EditTextStyle</item>
+        <item name="colorControlNormal">@color/darker_teal_80</item>
+        <item name="colorControlActivated">@color/darker_yellow</item>
     </style>
 
     <style name="EditTextStyle" parent="@android:style/Widget.EditText">
@@ -24,7 +26,7 @@
     </style>
 
     <style name="AppTheme.PositiveButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/dark_teal</item>
+        <item name="colorButtonNormal">@color/darker_yellow</item>
         <item name="colorControlHighlight">@color/alpha_white_lime</item>
     </style>
 

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import com.example.jocke.kotlin.R.drawable.crest_lindsdal
 import com.example.jocke.kotlin.R.menu.menu_overview
+import com.kwabenaberko.openweathermaplib.implementation.OpenWeatherMapHelper
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.drawer_layout_overview.*
 import kotlinx.android.synthetic.main.fragment_overview.*
@@ -59,6 +60,11 @@ class OverViewFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
 
         (activity as MainActivity).startTeamLineupFragment(null)
+    }
+
+    private fun getWeather(): String {
+        val helper = OpenWeatherMapHelper()
+        return "";
     }
 
 //    private fun getAllPersons() {

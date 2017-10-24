@@ -3,6 +3,7 @@ package com.example.jocke.kotlin
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.FragmentManager
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -16,20 +17,36 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private val TAG: String = this::class.java.simpleName
 
+    private lateinit var mFragmentManager: FragmentManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         Stetho.initializeWithDefaults(this)
 
+        mFragmentManager = supportFragmentManager
 
-        if (supportFragmentManager.findFragmentByTag("overViewFragment") == null) {
+        if (mFragmentManager.findFragmentById(R.id.overview_fragment_container) == null) {
             val overViewFragment = OverViewFragment.newInstance(null)
-            supportFragmentManager.beginTransaction()
+            mFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                     .replace(R.id.main_activity_framelayout, overViewFragment)
-                    .addToBackStack("overViewFragment")
+                    .addToBackStack("")
                     .commit()
+        }
+    }
+
+
+    override fun onBackPressed() {
+        if (mFragmentManager.backStackEntryCount > 0) {
+            Log.i(TAG, "Popping from back stack")
+            mFragmentManager.popBackStack()
+        } else {
+            Log.i(TAG, "Nothing to pop from back stack, calling super")
+
+            finish()
+            super.onBackPressed()
         }
     }
 
@@ -74,11 +91,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun startTeamLineupFragment(bundle: Bundle?) {
-
-
-        if (supportFragmentManager.findFragmentByTag("teamLineupFragment") == null) {
+        if (mFragmentManager.findFragmentByTag("teamLineupFragment") == null) {
             val teamLineupFragment = TeamLineupFragment.newInstance(bundle)
-            supportFragmentManager.beginTransaction()
+            mFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                     .replace(R.id.main_activity_framelayout, teamLineupFragment)
                     .addToBackStack("teamLineupFragment")
