@@ -2,132 +2,139 @@
 
 
 <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingEnd="12dp"
-    android:paddingStart="24dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:paddingStart="24dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/placeholder_away_location"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/placeholder_away_arena"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_home"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="start|center"
+        android:orientation="vertical"
+        android:paddingTop="24dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="24dp">
+            android:layout_gravity="end"
+            android:layout_marginEnd="12dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/weather_icon_image_view"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/weather_description_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/placeholder_away_location"
+                android:text="@string/title_rainy"
                 android:textSize="20sp"/>
 
             <TextView
+                android:id="@+id/weather_wind_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/placeholder_away_arena"
+                android:text="@string/title_wind_speed"
                 android:textSize="18sp"/>
 
             <TextView
+                android:id="@+id/weather_temperature_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_home"
+                android:text="@string/title_temperature"
                 android:textSize="18sp"/>
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="start|center"
-            android:orientation="vertical"
-            android:paddingTop="24dp">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="12dp"
-                android:orientation="vertical">
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/title_location"
+                android:textSize="16sp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/title_weather"
-                    android:textSize="20sp"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:contentDescription="@string/content_descript_google_maps"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_00_black_location"/>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/title_rainy"
-                    android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/title_line_up"
+                android:textSize="16sp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/title_temperature"
-                    android:textSize="18sp"/>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/title_location"
-                    android:textSize="16sp"/>
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:contentDescription="@string/content_descript_google_maps"
-                    android:padding="12dp"
-                    app:srcCompat="@drawable/ic_00_black_location"/>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/title_line_up"
-                    android:textSize="16sp"/>
-
-                <ImageButton
-                    android:id="@+id/line_up_image_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:contentDescription="@string/content_descript_game_details"
-                    android:padding="12dp"
-                    app:srcCompat="@drawable/ic_00_black_open_new"/>
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/line_up_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:contentDescription="@string/content_descript_game_details"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_00_black_open_new"/>
         </LinearLayout>
+    </LinearLayout>
 
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:adjustViewBounds="true"
-            android:alpha="0.03"
-            android:background="@drawable/crest_morbylanga"/>
-    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:alpha="0.03"
+        android:background="@drawable/crest_morbylanga"/>
+</RelativeLayout>

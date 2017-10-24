@@ -4,14 +4,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.example.jocke.kotlin.R
-import com.example.jocke.kotlin.data.person.TeamDTO
+import com.example.jocke.kotlin.data.dal.Team
 import com.example.jocke.kotlin.extensions.inflate
 import kotlinx.android.synthetic.main.row_team_data.view.*
 
 /**
  * Created by Jocke on 2017-07-09.
  */
-open class TeamAdapter(private val teams: List<TeamDTO>) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
+open class TeamAdapter(private val teams: List<Team>) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamAdapter.ViewHolder {
         return ViewHolder(parent.inflate(R.layout.row_team_data))
@@ -28,7 +28,7 @@ open class TeamAdapter(private val teams: List<TeamDTO>) : RecyclerView.Adapter<
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bindPerson(team: TeamDTO) {
+        fun bindPerson(team: Team) {
             with(team) {
                 itemView.firstname.text = team.firstName
                 itemView.lastname.text = team.lastName

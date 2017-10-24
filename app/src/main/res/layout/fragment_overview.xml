@@ -33,7 +33,6 @@
 
                 <include layout="@layout/toolbar_overview"/>
             </android.support.v7.widget.Toolbar>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

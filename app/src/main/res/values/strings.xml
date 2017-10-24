@@ -22,11 +22,12 @@
     <string name="content_descript_google_maps">Google maps</string>
     <string name="title_line_up">Lineup</string>
     <string name="title_weather">Weather</string>
-    <string name="title_temperature">20 C</string>
+    <string name="title_temperature">Temperature</string>
     <string name="title_location">Location</string>
     <string name="title_close">Close</string>
     <string name="title_rainy">Rainy</string>
     <string name="placeholder_date">2018-12-02</string>
     <string name="title_scoreboard">Scoreboard</string>
     <string name="title_upcoming_games">Upcoming games</string>
+    <string name="title_wind_speed">Wind Speed</string>
 </resources>

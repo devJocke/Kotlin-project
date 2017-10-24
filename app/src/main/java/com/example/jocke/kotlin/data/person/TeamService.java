@@ -1,5 +1,7 @@
 package com.example.jocke.kotlin.data.person;
 
+import com.example.jocke.kotlin.data.dal.Team;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,6 +25,6 @@ public interface TeamService {
     @DELETE("/api/Team/{id}")
     Call<List<TeamDTO>> deletePerson(int id);
 
-    @GET("/api/Team/GetAll")
-    Call<List<TeamDTO>> getAllPersons();
+    @GET("/api/Person/GetAll")
+    Call<List<Team>> getAllPersons();
 }

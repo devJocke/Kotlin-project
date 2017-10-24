@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.*
 import com.example.jocke.kotlin.R.drawable.crest_lindsdal
 import com.example.jocke.kotlin.R.menu.menu_overview
+import com.kwabenaberko.openweathermaplib.Units
 import com.kwabenaberko.openweathermaplib.implementation.OpenWeatherMapHelper
+import com.kwabenaberko.openweathermaplib.models.currentweather.CurrentWeather
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.drawer_layout_overview.*
 import kotlinx.android.synthetic.main.fragment_overview.*
@@ -36,6 +38,7 @@ class OverViewFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater?.inflate(R.layout.fragment_overview, container, false)
 
+        getWeather()
         return rootView
     }
 
@@ -63,7 +66,34 @@ class OverViewFragment : Fragment(), View.OnClickListener {
     }
 
     private fun getWeather(): String {
-        val helper = OpenWeatherMapHelper()
+        val weatherMapHelper = OpenWeatherMapHelper()
+        weatherMapHelper.setApiKey("13e443a8ab85e95ebd6e17188c87e874")
+        weatherMapHelper.setUnits(Units.METRIC)
+
+        weatherMapHelper.getCurrentWeatherByCityName("Lissabon", object : OpenWeatherMapHelper.CurrentWeatherCallback {
+            override fun onSuccess(currentWeather: CurrentWeather) {
+
+//                Picasso.with(context)
+//                        .load("http://openweathermap.org/img/w/" + currentWeather.weatherArray[0].icon + ".png")
+//                        .fit()
+//                        .into(weather_icon_image_view)
+
+                weather_description_text_view.text = currentWeather.weatherArray[0].description.toString().capitalize()
+                weather_wind_text_view.append(" " + currentWeather.wind.speed.toString().capitalize())
+                weather_temperature_text_view.append(" " + currentWeather.main.tempMax)
+                Log.v(TAG,
+                        "Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lat + "\n"
+                                + "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
+                                + "Max Temperature: " + currentWeather.main.tempMax + "\n"
+                                + "Wind Speed: " + currentWeather.wind.speed + "\n"
+                                + "City, Country: " + currentWeather.name + ", " + currentWeather.sys.country
+                )
+            }
+
+            override fun onFailure(throwable: Throwable) {
+                Log.v(TAG, throwable.message)
+            }
+        })
         return "";
     }
 
@@ -79,18 +109,18 @@ class OverViewFragment : Fragment(), View.OnClickListener {
 //        val client = retrofit.create(TeamService::class.java)
 //        val call = client.allPersons
 //
-//        call.enqueue(object : Callback<List<TeamDTO>> {
-//            override fun onResponse(call: Call<List<TeamDTO>>, response: Response<List<TeamDTO>>) {
+//        call.enqueue(object : Callback<List<Team>> {
+//            override fun onResponse(call: Call<List<Team>>, response: Response<List<Team>>) {
 //                val allPersons = response.body()!!
 //
 //                if (allPersons.isEmpty()) {
 //                    Toast.makeText(context, "No Persons available", Toast.LENGTH_SHORT).show()
 //                }
-//                recyclerView.layoutManager = LinearLayoutManager(context)
-//                recyclerView.adapter = TeamAdapter(allPersons)
+//                recycler_view.layoutManager = LinearLayoutManager(context)
+//                recycler_view.adapter = TeamAdapter(allPersons)
 //            }
 //
-//            override fun onFailure(call: Call<List<TeamDTO>>, t: Throwable) {
+//            override fun onFailure(call: Call<List<Team>>, t: Throwable) {
 //                Toast.makeText(context, "Server error", Toast.LENGTH_SHORT).show()
 //            }
 //        })
