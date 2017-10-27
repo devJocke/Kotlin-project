@@ -19,7 +19,7 @@
     <string name="title_history">History</string>
     <string name="content_descript_club_crest">Club Crest</string>
     <string name="content_descript_game_details">Game details</string>
-    <string name="content_descript_google_maps">Google maps</string>
+    <string name="content_description_google_maps">Google maps</string>
     <string name="title_line_up">Lineup</string>
     <string name="title_weather">Weather</string>
     <string name="title_temperature">Temperature</string>

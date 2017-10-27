@@ -1,54 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingEnd="12dp"
-    android:paddingStart="24dp">
+    android:paddingEnd="4dp"
+    android:paddingStart="4dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="24dp">
+        style="@style/LinearLayout_Wrap.Vertical"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/placeholder_away_location"
-            android:textSize="20sp"/>
+            style="@style/Title_Large.Family_Medium"
+            android:text="@string/placeholder_away_location"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/placeholder_away_arena"
-            android:textSize="18sp"/>
+            style="@style/Title_Medium.Family_Medium"
+            android:text="@string/placeholder_away_arena"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_home"
-            android:textSize="18sp"/>
+            style="@style/Title_Medium.Family_Normal"
+            android:text="@string/title_home"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="start|center"
-        android:orientation="vertical"
-        android:paddingTop="24dp">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/LinearLayout_Wrap.Vertical"
             android:layout_gravity="end"
             android:layout_marginEnd="12dp"
-            android:orientation="vertical">
+            android:layout_marginTop="16dp">
 
             <ImageView
                 android:id="@+id/weather_icon_image_view"
@@ -58,51 +45,37 @@
 
             <TextView
                 android:id="@+id/weather_description_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Title_Large.Family_Medium"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/title_rainy"
-                android:textSize="20sp"/>
+                android:text="@string/title_rainy"/>
 
             <TextView
                 android:id="@+id/weather_wind_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Title_Medium.Family_Medium"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/title_wind_speed"
-                android:textSize="18sp"/>
+                android:text="@string/title_wind_speed"/>
 
             <TextView
                 android:id="@+id/weather_temperature_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_temperature"
-                android:textSize="18sp"/>
+                style="@style/Title_Medium.Family_Normal"
+                android:text="@string/title_temperature"/>
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/title_location"
-                android:textSize="16sp"/>
+                style="@style/Title_Medium.Family_Medium"
+                android:text="@string/title_location"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Normal_Icon"
                 android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:contentDescription="@string/content_descript_google_maps"
-                android:padding="12dp"
+                android:contentDescription="@string/content_description_google_maps"
                 app:srcCompat="@drawable/ic_00_black_location"/>
 
             <View
@@ -111,20 +84,14 @@
                 android:layout_weight="1"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/title_line_up"
-                android:textSize="16sp"/>
+                style="@style/Title_Medium.Family_Medium"
+                android:text="@string/title_line_up"/>
 
             <ImageButton
                 android:id="@+id/line_up_image_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Normal_Icon"
                 android:background="?attr/selectableItemBackground"
-                android:clickable="true"
                 android:contentDescription="@string/content_descript_game_details"
-                android:padding="12dp"
                 app:srcCompat="@drawable/ic_00_black_open_new"/>
         </LinearLayout>
     </LinearLayout>
