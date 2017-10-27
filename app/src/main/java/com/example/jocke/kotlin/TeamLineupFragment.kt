@@ -2,7 +2,6 @@ package com.example.jocke.kotlin
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.NavUtils
 import android.view.*
 import kotlinx.android.synthetic.main.fragment_team_lineup.*
 
@@ -40,8 +39,8 @@ class TeamLineupFragment : Fragment() {
             R.id.location_item -> {
                 //TODO Launch google maps
             }
-            R.id.home -> {
-                NavUtils.navigateUpFromSameTask(activity as MainActivity)
+            android.R.id.home -> {
+                (activity as MainActivity).onBackPressed()
             }
         }
         return super.onOptionsItemSelected(item)

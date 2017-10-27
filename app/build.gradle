@@ -14,6 +14,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+        resValue 'string', 'WEATHER_API_KEY', '13e443a8ab85e95ebd6e17188c87e874'
     }
 
     buildTypes {
@@ -39,7 +41,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     implementation "com.android.support:appcompat-v7:$supportVersion"

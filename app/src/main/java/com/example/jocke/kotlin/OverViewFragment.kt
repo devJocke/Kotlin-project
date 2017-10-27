@@ -67,34 +67,22 @@ class OverViewFragment : Fragment(), View.OnClickListener {
 
     private fun getWeather(): String {
         val weatherMapHelper = OpenWeatherMapHelper()
-        weatherMapHelper.setApiKey("13e443a8ab85e95ebd6e17188c87e874")
+//        BuildConfig.WEATHER_API_KEY
+        weatherMapHelper.setApiKey(getString(R.string.WEATHER_API_KEY))
         weatherMapHelper.setUnits(Units.METRIC)
 
-        weatherMapHelper.getCurrentWeatherByCityName("Lissabon", object : OpenWeatherMapHelper.CurrentWeatherCallback {
+        weatherMapHelper.getCurrentWeatherByCityName("Kalmar", object : OpenWeatherMapHelper.CurrentWeatherCallback {
             override fun onSuccess(currentWeather: CurrentWeather) {
-
-//                Picasso.with(context)
-//                        .load("http://openweathermap.org/img/w/" + currentWeather.weatherArray[0].icon + ".png")
-//                        .fit()
-//                        .into(weather_icon_image_view)
-
                 weather_description_text_view.text = currentWeather.weatherArray[0].description.toString().capitalize()
                 weather_wind_text_view.append(" " + currentWeather.wind.speed.toString().capitalize())
                 weather_temperature_text_view.append(" " + currentWeather.main.tempMax)
-                Log.v(TAG,
-                        "Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lat + "\n"
-                                + "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
-                                + "Max Temperature: " + currentWeather.main.tempMax + "\n"
-                                + "Wind Speed: " + currentWeather.wind.speed + "\n"
-                                + "City, Country: " + currentWeather.name + ", " + currentWeather.sys.country
-                )
             }
 
             override fun onFailure(throwable: Throwable) {
                 Log.v(TAG, throwable.message)
             }
         })
-        return "";
+        return ""
     }
 
 //    private fun getAllPersons() {
