@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
 
+    <!--- Linearlayout -->
     <style name="LinearLayout_Wrap">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -8,5 +10,16 @@
 
     <style name="LinearLayout_Wrap.Vertical">
         <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Cardview -->
+    <style name="Overview_CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="cardElevation">5dp</item>
     </style>
 </resources>

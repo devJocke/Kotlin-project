@@ -1,11 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
                 android:id="@+id/overview_fragment_container"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                android:orientation="horizontal"
                 tools:context="com.example.jocke.kotlin.OverViewFragment">
 
 
@@ -17,9 +15,7 @@
         tools:openDrawer="start">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            style="@style/LinearLayout_Wrap.Vertical">
 
             <!-- Manually control the inset of the hamburger icon -->
             <android.support.v7.widget.Toolbar
@@ -33,85 +29,25 @@
 
                 <include layout="@layout/toolbar_overview"/>
             </android.support.v7.widget.Toolbar>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@drawable/toolbar_dropshadow"/>
 
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1.8"
-                app:cardElevation="5dp"
-                tools:showIn="@layout/fragment_overview">
+                style="@style/Overview_CardView">
 
                 <include layout="@layout/next_game_overview"/>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_weight="1.4"
-                app:cardElevation="5dp"
-                tools:showIn="@layout/fragment_overview">
+                style="@style/Overview_CardView">
 
                 <include layout="@layout/upcoming_game_overview"/>
             </android.support.v7.widget.CardView>
 
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_weight="1"
-                app:cardElevation="5dp"
-                tools:showIn="@layout/fragment_overview">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="24dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title_scoreboard"
-                        android:textAlignment="center"
-                        android:textSize="16sp"/>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="@string/title_location"
-                            android:textSize="16sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="1"
-                            android:textSize="16sp"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            <include layout="@layout/scoreboard_overview"/>
         </LinearLayout>
 
         <!-- GRAVITY LEFT STATES THE DRAWER CONTENT -->

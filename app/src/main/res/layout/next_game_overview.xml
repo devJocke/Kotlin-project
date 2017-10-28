@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:paddingEnd="4dp"
     android:paddingStart="4dp">
 
@@ -39,20 +39,17 @@
 
             <ImageView
                 android:id="@+id/weather_icon_image_view"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                style="@style/Normal_Button"
                 android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/weather_description_text_view"
                 style="@style/Title_Large.Family_Medium"
-                android:layout_marginEnd="8dp"
                 android:text="@string/title_rainy"/>
 
             <TextView
                 android:id="@+id/weather_wind_text_view"
                 style="@style/Title_Medium.Family_Medium"
-                android:layout_marginEnd="8dp"
                 android:text="@string/title_wind_speed"/>
 
             <TextView
@@ -73,7 +70,7 @@
                 android:text="@string/title_location"/>
 
             <ImageButton
-                style="@style/Normal_Icon"
+                style="@style/Normal_Button"
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/content_description_google_maps"
                 app:srcCompat="@drawable/ic_00_black_location"/>
@@ -89,7 +86,7 @@
 
             <ImageButton
                 android:id="@+id/line_up_image_button"
-                style="@style/Normal_Icon"
+                style="@style/Normal_Button"
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/content_descript_game_details"
                 app:srcCompat="@drawable/ic_00_black_open_new"/>

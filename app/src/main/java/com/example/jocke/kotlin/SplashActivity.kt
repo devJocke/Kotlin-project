@@ -113,7 +113,7 @@ class SplashActivity : AppCompatActivity(), Player.EventListener {
     override fun onTracksChanged(trackGroups: TrackGroupArray?, trackSelections: TrackSelectionArray?) {}
 
     override fun onPlayerError(error: ExoPlaybackException) {
-        Log.e("Error", error.message)
+        Log.e("Error", "  " + error.message)
     }
 
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
