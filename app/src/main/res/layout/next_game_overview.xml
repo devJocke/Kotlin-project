@@ -70,6 +70,7 @@
                 android:text="@string/title_location"/>
 
             <ImageButton
+                android:id="@+id/next_game_location_image_button"
                 style="@style/Normal_Button"
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/content_description_google_maps"
@@ -85,7 +86,7 @@
                 android:text="@string/title_line_up"/>
 
             <ImageButton
-                android:id="@+id/line_up_image_button"
+                android:id="@+id/game_line_up_image_button"
                 style="@style/Normal_Button"
                 android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/content_descript_game_details"

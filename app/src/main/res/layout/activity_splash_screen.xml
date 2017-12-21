@@ -5,7 +5,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/black"
-                android:orientation="vertical"
                 tools:context="com.example.jocke.kotlin.SplashActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
@@ -42,12 +41,15 @@
             android:background="@drawable/crest_lindsdal"/>
 
         <EditText
+            android:id="@+id/username_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/title_email"/>
 
         <EditText
+            android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
+            android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:hint="Password"/>
 

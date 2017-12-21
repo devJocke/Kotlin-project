@@ -1,11 +1,13 @@
 package com.example.jocke.kotlin
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.*
 import com.example.jocke.kotlin.R.drawable.crest_lindsdal
 import com.example.jocke.kotlin.R.menu.menu_overview
+import com.example.jocke.kotlin.extensions.inflate
 import com.kwabenaberko.openweathermaplib.Units
 import com.kwabenaberko.openweathermaplib.implementation.OpenWeatherMapHelper
 import com.kwabenaberko.openweathermaplib.models.currentweather.CurrentWeather
@@ -23,10 +25,10 @@ import kotlinx.android.synthetic.main.toolbar_overview.*
 class OverViewFragment : Fragment(), View.OnClickListener {
 
     private val TAG: String = javaClass.simpleName
-
+    private lateinit var mMainActivity: MainActivity
 
     companion object {
-        fun newInstance(bundle: Bundle?): OverViewFragment = OverViewFragment()
+        fun newInstance(): OverViewFragment = OverViewFragment()
     }
 
 
@@ -36,18 +38,23 @@ class OverViewFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater?.inflate(R.layout.fragment_overview, container, false)
-
-        getWeather()
+        val rootView =  container?.inflate(R.layout.fragment_overview)
         return rootView
+    }
+
+    private fun openMaps() {
+
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        line_up_image_button.setOnClickListener(this)
+
+        getWeather()
+        game_line_up_image_button.setOnClickListener(this)
+        next_game_location_image_button.setOnClickListener { openMaps() }
 
         Picasso.with(context).load(crest_lindsdal).fit().into(club_crest_image_view)
-        (activity as MainActivity).setupDrawer(toolbar, drawer_layout, main_navigation_container)
+        mMainActivity.setupDrawer(toolbar, drawer_layout, main_navigation_container)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -55,14 +62,17 @@ class OverViewFragment : Fragment(), View.OnClickListener {
         inflater?.inflate(menu_overview, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        Log.d(TAG, item?.itemId.toString())
-        return super.onOptionsItemSelected(item)
+    override fun onClick(view: View?) {
+        mMainActivity.startTeamLineupFragment()
     }
 
-    override fun onClick(p0: View?) {
-
-        (activity as MainActivity).startTeamLineupFragment(null)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is GetParentActivity) {
+            mMainActivity = context.getMainActivity() as MainActivity
+        } else {
+            throw NotImplementedError("Context does not implement GetParentActivity")
+        }
     }
 
     private fun getWeather(): String {

@@ -15,11 +15,10 @@
     <!-- Cardview -->
     <style name="Overview_CardView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_height">160dp</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginTop">16dp</item>
-        <item name="android:layout_weight">1.0</item>
         <item name="cardElevation">5dp</item>
     </style>
 </resources>

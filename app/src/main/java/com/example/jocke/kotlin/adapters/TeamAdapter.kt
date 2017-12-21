@@ -13,9 +13,7 @@ import kotlinx.android.synthetic.main.row_team_data.view.*
  */
 open class TeamAdapter(private val teams: List<Team>) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamAdapter.ViewHolder {
-        return ViewHolder(parent.inflate(R.layout.row_team_data))
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamAdapter.ViewHolder = ViewHolder(parent.inflate(R.layout.row_team_data))
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

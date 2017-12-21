@@ -2,7 +2,6 @@ package com.example.jocke.kotlin
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
@@ -18,7 +17,6 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DataSpec
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.RawResourceDataSource
-import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashActivity : AppCompatActivity(), Player.EventListener {
 
@@ -37,17 +35,34 @@ class SplashActivity : AppCompatActivity(), Player.EventListener {
     private fun setupLoginButton() {
 
         //TODO Validate if false don't speed up or login
-        login.setOnClickListener({
-            if (player.playbackParameters.speed == 1f) {
-                player.playbackParameters = PlaybackParameters(5f, 1f)
-                Handler().postDelayed({
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }, 500)
-            } else {
-                player.playbackParameters = PlaybackParameters(1f, 1f)
-            }
-        })
+//        login.setOnClickListener({
+//            if (player.playbackParameters.speed == 1f) {
+//
+//                val flow = Flowable.just(username_edit_text)
+//                val flow2 = Flowable.just(password_edit_text)
+//
+//                val d = Flowables.combineLatest(
+//                        flow,
+//                        flow2) { flow, flow2 ->
+//                    username_edit_text.text.isNotEmpty() && password_edit_text.text.isNotEmpty()
+//                }.subscribe({ inputCorrect ->
+//                    if (inputCorrect) {
+//                        player.playbackParameters = PlaybackParameters(5f, 1f)
+//                        Handler().postDelayed({
+//                            startActivity(Intent(this, MainActivity::class.java))
+//                            finish()
+//                        }, 500)
+//                    } else {
+//                        login.isEnabled = false
+//                    }
+//                })
+//
+//            } else {
+//                player.playbackParameters = PlaybackParameters(1f, 1f)
+//            }
+//        })
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
 
@@ -156,3 +171,4 @@ class SplashActivity : AppCompatActivity(), Player.EventListener {
         }
     }
 }
+

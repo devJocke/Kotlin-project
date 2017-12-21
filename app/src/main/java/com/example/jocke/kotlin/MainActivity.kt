@@ -1,5 +1,6 @@
 package com.example.jocke.kotlin
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -13,7 +14,7 @@ import android.view.MenuItem
 import com.facebook.stetho.Stetho
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, GetParentActivity {
 
     private val TAG: String = this::class.java.simpleName
 
@@ -28,27 +29,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mFragmentManager = supportFragmentManager
 
         if (mFragmentManager.findFragmentById(R.id.overview_fragment_container) == null) {
-            val overViewFragment = OverViewFragment.newInstance(null)
+            val overViewFragment = OverViewFragment.newInstance()
             mFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                     .replace(R.id.main_activity_framelayout, overViewFragment)
-                    .addToBackStack("")
                     .commit()
         }
     }
 
-
-    override fun onBackPressed() {
-        if (mFragmentManager.backStackEntryCount > 0) {
-            Log.i(TAG, "Popping from back stack")
-            mFragmentManager.popBackStack()
-        } else {
-            Log.i(TAG, "Nothing to pop from back stack, calling super")
-
-            finish()
-            super.onBackPressed()
+    fun startTeamLineupFragment() {
+        if (mFragmentManager.findFragmentByTag(TeamLineupFragment.javaClass.simpleName) == null) {
+            val teamLineupFragment = TeamLineupFragment.newInstance()
+            mFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                    .replace(R.id.main_activity_framelayout, teamLineupFragment)
+                    .addToBackStack(TeamLineupFragment.javaClass.simpleName)
+                    .commit()
         }
     }
+
 
     fun setupDrawer(toolbar: Toolbar, drawerLayout: DrawerLayout, navView: NavigationView) {
         setSupportActionBar(toolbar)
@@ -90,16 +89,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    fun startTeamLineupFragment(bundle: Bundle?) {
-        if (mFragmentManager.findFragmentByTag("teamLineupFragment") == null) {
-            val teamLineupFragment = TeamLineupFragment.newInstance(bundle)
-            mFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                    .replace(R.id.main_activity_framelayout, teamLineupFragment)
-                    .addToBackStack("teamLineupFragment")
-                    .commit()
-        }
-    }
-
+      override fun getMainActivity(): Activity = this
 }
+
 
