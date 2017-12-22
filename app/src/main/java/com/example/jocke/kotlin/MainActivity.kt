@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.app.FragmentManager
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -18,19 +17,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private val TAG: String = this::class.java.simpleName
 
-    private lateinit var mFragmentManager: FragmentManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         Stetho.initializeWithDefaults(this)
 
-        mFragmentManager = supportFragmentManager
-
-        if (mFragmentManager.findFragmentById(R.id.overview_fragment_container) == null) {
+        if (supportFragmentManager.findFragmentById(R.id.overview_fragment_container) == null) {
             val overViewFragment = OverViewFragment.newInstance()
-            mFragmentManager.beginTransaction()
+            supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                     .replace(R.id.main_activity_framelayout, overViewFragment)
                     .commit()
@@ -38,9 +33,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun startTeamLineupFragment() {
-        if (mFragmentManager.findFragmentByTag(TeamLineupFragment.javaClass.simpleName) == null) {
+        if (supportFragmentManager.findFragmentByTag(TeamLineupFragment.javaClass.simpleName) == null) {
             val teamLineupFragment = TeamLineupFragment.newInstance()
-            mFragmentManager.beginTransaction()
+            supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                     .replace(R.id.main_activity_framelayout, teamLineupFragment)
                     .addToBackStack(TeamLineupFragment.javaClass.simpleName)
