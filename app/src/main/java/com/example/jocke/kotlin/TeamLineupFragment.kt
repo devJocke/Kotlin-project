@@ -1,9 +1,9 @@
 package com.example.jocke.kotlin
 
-import android.content.Context
 import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -11,17 +11,17 @@ import com.example.jocke.kotlin.extensions.inflate
 import kotlinx.android.synthetic.main.fragment_team_lineup.*
 
 
-class TeamLineupFragment : Fragment(), View.OnTouchListener {
+class TeamLineupFragment : Fragment(), View.OnTouchListener, View.OnSystemUiVisibilityChangeListener {
 
     private val TAG: String = javaClass.simpleName
 
-    private lateinit var mMainActivity: MainActivity
-    private lateinit var mContainer: ViewGroup
     private lateinit var mPlayers: ArrayList<ImageView>
     private var xDelta = 0
     private var yDelta = 0
     private var deviceWidth = 0
     private var deviceHeight = 0
+
+    private lateinit var decorView: View
 
     companion object {
         fun newInstance(): TeamLineupFragment = TeamLineupFragment()
@@ -38,21 +38,18 @@ class TeamLineupFragment : Fragment(), View.OnTouchListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = container?.inflate(R.layout.fragment_team_lineup)
 
-        mContainer = container!!
-
         return rootView
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mMainActivity.attachSupportBar(toolbar, true)
+        (activity as MainActivity).attachSupportBar(toolbar, true)
 
         mPlayers = ArrayList()
-
         for (i in 0..10) {
             val imageView = ImageView(context)
             imageView.setImageResource(R.drawable.ic_00_black_person)
-            mContainer.addView(imageView)
+            (view?.parent as ViewGroup).addView(imageView)
             val layoutParams = FrameLayout.LayoutParams(84, 84)
             mPlayers.add(imageView)
             layoutParams.marginStart = 70 * (i + 2)
@@ -61,41 +58,49 @@ class TeamLineupFragment : Fragment(), View.OnTouchListener {
             imageView.setOnTouchListener(this)
         }
         getDeviceDimensions()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is GetParentActivity) {
-            mMainActivity = context.getMainActivity() as MainActivity
-        } else {
-            throw NotImplementedError("Context does not implement GetParentActivity")
+        decorView = activity.window.decorView
+        decorView.setOnSystemUiVisibilityChangeListener { visibility ->
+            if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == View.VISIBLE) {
+                fragment_team_lineup_container.fitsSystemWindows = true
+            }
         }
     }
 
     override fun onPause() {
         super.onPause()
+        decorView.setOnSystemUiVisibilityChangeListener { null }
         for (i in mPlayers) {
-            mContainer.removeView(i)
+            (view?.parent as ViewGroup).removeView(i)
         }
     }
 
-    // This snippet hides the system bars.
     private fun hideSystemUI() {
         // Set the IMMERSIVE flag.
         // Set the content to appear under the system bars so that the content
         // doesn't resize when the system bars hide and show.
+        activity.window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_IMMERSIVE)
+    }
 
-        mMainActivity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
-                View.SYSTEM_UI_FLAG_FULLSCREEN or
-                View.SYSTEM_UI_FLAG_IMMERSIVE
+    override fun onDetach() {
+        super.onDetach()
+        showSystemUI()
+    }
+
+    private fun showSystemUI() {
+        activity.window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     }
 
 
     private fun getDeviceDimensions() {
-        val display = mMainActivity.windowManager.defaultDisplay
+        val display = (activity as MainActivity).windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
         deviceWidth = size.x
@@ -143,7 +148,8 @@ class TeamLineupFragment : Fragment(), View.OnTouchListener {
                 //TODO Launch google maps
             }
             android.R.id.home -> {
-                mMainActivity.onBackPressed()
+                showSystemUI()
+                activity.onBackPressed()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -160,23 +166,7 @@ class TeamLineupFragment : Fragment(), View.OnTouchListener {
         return !(viewRelativeXPosition < x - 150 || viewRelativeXPosition > x + w || viewRelativeYPosition < y || viewRelativeYPosition > y + h)
     }
 
-    override fun onResume() {
-        super.onResume()
-        uiChangeListener()
-    }
-
-    private fun uiChangeListener() {
-        val decorView = mMainActivity.window.decorView
-
-        decorView.setOnSystemUiVisibilityChangeListener { visibility ->
-            if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {
-                decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        or View.SYSTEM_UI_FLAG_FULLSCREEN
-                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-            }
-        }
+    override fun onSystemUiVisibilityChange(visibility: Int) {
+        Log.d(TAG, "Hejksandadasd  " + visibility)
     }
 }

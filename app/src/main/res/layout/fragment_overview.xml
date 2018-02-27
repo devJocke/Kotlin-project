@@ -3,6 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/overview_fragment_container"
                 android:layout_width="match_parent"
+                android:fitsSystemWindows="true"
                 android:layout_height="match_parent"
                 tools:context="com.example.jocke.kotlin.OverViewFragment">
 
@@ -52,6 +53,10 @@
                     <include layout="@layout/upcoming_game_overview"/>
                 </android.support.v7.widget.CardView>
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
                 <include layout="@layout/scoreboard_overview"/>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

@@ -33,12 +33,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun startTeamLineupFragment() {
-        if (supportFragmentManager.findFragmentByTag(TeamLineupFragment.javaClass.simpleName) == null) {
+        if (supportFragmentManager.findFragmentByTag(TeamLineupFragment::class.java.simpleName) == null) {
             val teamLineupFragment = TeamLineupFragment.newInstance()
             supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                     .replace(R.id.main_activity_framelayout, teamLineupFragment)
-                    .addToBackStack(TeamLineupFragment.javaClass.simpleName)
+                    .addToBackStack(TeamLineupFragment::class.java.simpleName)
                     .commit()
         }
     }
@@ -84,7 +84,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-      override fun getMainActivity(): Activity = this
+
+    override fun getMainActivity(): Activity = this
 }
 
 

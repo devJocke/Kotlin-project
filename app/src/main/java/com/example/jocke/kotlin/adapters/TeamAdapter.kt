@@ -26,12 +26,14 @@ open class TeamAdapter(private val teams: List<Team>) : RecyclerView.Adapter<Tea
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bindPerson(team: Team) {
-            with(team) {
-                itemView.firstname.text = team.firstName
-                itemView.lastname.text = team.lastName
-                itemView.thirdname.text = team.thirdName
-            }
+        fun bindPerson(team: Team) = with(team) {
+            itemView.firstname.text = team.firstName
+            itemView.lastname.text = team.lastName
+            itemView.thirdname.text = team.thirdName
         }
+    }
+
+    override fun registerAdapterDataObserver(observer: RecyclerView.AdapterDataObserver?) {
+        super.registerAdapterDataObserver(observer)
     }
 }
