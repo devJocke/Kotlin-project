@@ -9,6 +9,8 @@ import android.os.Parcelable;
 
 public class TeamMember extends Team implements Parcelable {
 
+    //TODO TRANSISTENT WITH PARCELABLE ?
+
     private Long id;
     private final String firstName;
     private final String lastName;

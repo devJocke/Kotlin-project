@@ -167,8 +167,8 @@ class OverViewFragment : Fragment(), View.OnClickListener,ItemListDialogFragment
 //                    Toast.makeText(context, "No Persons available", Toast.LENGTH_SHORT).show()
 //                }
 
-//        allPersons.add(Team(1L, "För", "Efter", "Tredje"))
-        allPersons.add(TeamMember.TeamBuilder("Jocke", "Pocke", 22).setThirdName("a").build())
+//        allPersons.add(Team(1L, "För", "Efter", "Tredje")) 
+        allPersons.add(TeamMember.TeamBuilder("Jocke", "Pocke", 22).build())
         allPersons.add(TeamMember.TeamBuilder("Steffe", "Stagg", 26).setThirdName("steffelito").build())
 
         val teamAdapter = TeamAdapter(allPersons)
